@@ -4,7 +4,7 @@ GoGoGadget
 A Generator for Isolated Disk Galaxies in Gadget
 ------------------------------------------------
 
-This script generates the initial conditions and parameterfile for a gadget run with an isolated galaxy. It is inteded for use with the fixed potential [InterStellarGadget](https://github.com/JBorrow/InterStellarGadget).
+This script generates the initial conditions and parameterfile for a gadget run with an isolated galaxy. It is inteded for use with the fixed potential [InterStellarGadget](https://github.com/JBorrow/InterStellarGadget). It also provides a much more readable and portable way to write gadget parameterfiles.
 
 To set up a run, simply run the parser script followed by the .ini file, for example from the 'example' directory:
 ```
