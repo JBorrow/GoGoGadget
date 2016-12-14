@@ -48,3 +48,12 @@ StarMass: 5e10
 StarParticles: 1e3
 StarDispersion: 0
 ```
+
+Warranty/etc.
+-------------
+
+Of course, this software is supplied with the usual:
+
++ No warranty
++ No guarantee that it will produce convergent results
++ No guarantee that it will not blow up your computer.
