@@ -70,12 +70,12 @@ class Generator:
 
 
     def _m_in_r_gas(self, r):
-        div = self.r/self.R_gas
+        div = r/self.R_gas
         return self.M_gas*(1 - (1 + div)*np.exp(-div))
 
 
     def _m_in_r_star(self, r):
-        div = self.r/self.R_star
+        div = r/self.R_star
         return self.M_star*(1 - (1 + div)*np.exp(-div))
 
 
@@ -91,6 +91,7 @@ class Generator:
     def _convert_coords(self):
         self.dm_x, self.dm_y, self.dm_z = dists.spherical_to_cartesian(self.dm_r, self.dm_theta, self.dm_phi)
         self.gas_x, self.gas_y, self.gas_z = dists.cylindrical_to_cartesian(self.gas_r, self.gas_theta, self.gas_z)
+        self.star_x, self.star_y, self.star_z = dists.cylindrical_to_cartesian(self.star_r, self.star_theta, self.star_z)
 
         return self.dm_x, self.dm_y, self.dm_z, self.gas_x, self.gas_y, self.gas_z
     
