@@ -98,13 +98,14 @@ class Generator:
 
 if __name__ == "__main__":
     # Generate some test distribution and display in 3d with mpl
-    gen = Generator(int(100), int(100), 1e5, 1e4, 10, 40, 100, 10, 2)
+    gen = Generator(int(100), int(100), int(100), 1e5, 1e4, 10, 40, 100, 10, 40, 100, 10, 2)
     import matplotlib.pyplot as plt
     from mpl_toolkits.mplot3d import Axes3D
 
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
     ax.quiver(gen.gas_x, gen.gas_y, gen.gas_z, gen.gas_v_x, gen.gas_v_y, gen.gas_v_z, length=10)
+    ax.quiver(gen.star_x, gen.star_y, gen.star_z, gen.star_v_x, gen.star_v_y, gen.star_v_z, length=10)
     ax.set_zlim(-400, 400)
 
     plt.show()
