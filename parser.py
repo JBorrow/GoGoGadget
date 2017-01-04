@@ -56,17 +56,12 @@ G = 6.674e-8 * (1/(ul_cm*(uv_cms**2)/um_g))
 # Actually generate particles
 
 print("Generating Particles...")
-print("Gas...")
-gen_gas = Generator(0, n_gas, M_halo, M_gas, R_nfw, c_nfw, R_gas, max_gas, Z_gas, G)
-print("Stars...")
-gen_star = Generator(0, n_star, M_halo, M_star, R_nfw, c_nfw, R_star, max_gas, Z_gas, G)
-
+gen = Generator(0, n_gas, n_star, M_halo, M_gas, M_star, R_nfw, c_nfw, R_gas, max_gas, Z_gas, R_star, max_star, Z_star, G)
 print("Writing IC File... {}".format(ic_filename))
 
 op = h5py.File(ic_filename, 'w')
 write_head(op, [n_gas, 0, 0, 0, n_star, 0], [M_gas/n_gas, 0, 0, 0, M_star/n_star, 0], 0, z=1)
 
 # Gas
-write_block(op, 0, np.array([gen_gas.gas_x, gen_gas.gas_y, gen_gas.gas_z]).T, np.array([gen_gas.gas_v_x, gen_gas.gas_v_y, gen_gas.gas_v_z]).T, np.arange(0, n_gas))
-# Star
-write_block(op, 4, np.array([gen_star.gas_x, gen_star.gas_y, gen_star.gas_z]).T, np.array([gen_star.gas_v_x, gen_star.gas_v_y, gen_star.gas_v_z]).T, np.arange(0, n_gas))
+write_block(op, 0, np.array([gen.gas_x, gen.gas_y, gen.gas_z]).T, np.array([gen.gas_v_x, gen.gas_v_y, gen.gas_v_z]).T, np.arange(0, n_gas))
+write_block(op, 4, np.array([gen.star_x, gen.star_y, gen.star_z]).T, np.array([gen.star_v_x, gen.star_v_y, gen.star_v_z]).T, np.arange(0, n_star))
