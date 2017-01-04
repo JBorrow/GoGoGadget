@@ -57,3 +57,5 @@ Of course, this software is supplied with the usual:
 + No warranty
 + No guarantee that it will produce convergent results
 + No guarantee that it will not blow up your computer.
+
+This script is not parallelized well, in particular the routines that generate the exponential profile are very lousy.
