@@ -67,7 +67,7 @@ if n_gas:
 if n_star:
     masses[4] = M_star/n_star
 
-write_head(op, [n_gas, 0, 0, 0, n_star, 0], masses, z=1)
+write_head(op, [n_gas, 0, 0, 0, n_star, 0], masses, 0, z=1)
 
 if n_gas:
     write_block(op, 0, np.array([gen.gas_x, gen.gas_y, gen.gas_z]).T, np.array([gen.gas_v_x, gen.gas_v_y, gen.gas_v_z]).T, np.arange(0, n_gas))
