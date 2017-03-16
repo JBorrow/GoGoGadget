@@ -12,6 +12,8 @@ python3 ../parser.py test.ini
 ```
 This will generate the initial conditions (sans dark matter halo, of course). These follow exponential radial profiles and sech^2 profiles for the gas and stars.
 
+A quick note: using the ```--pfile``` option will ensure that the script only generates the parameterfile, and then quits.
+
 The custom (i.e. non base-gadget) paramters are:
 ```
 [ParameterFile]

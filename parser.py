@@ -20,6 +20,8 @@ for section in config.sections():
 print("Writing Gadget Paramterfile... {}".format(gfname))
 with open(gfname, 'w') as f:
     f.write(gfile)
+    if "--pfile" in sys.argv:
+        exit(0)
 
 # Generate initial conditions
 
