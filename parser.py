@@ -62,6 +62,7 @@ print("Writing IC File... {}".format(ic_filename))
 op = h5py.File(ic_filename, 'w')
 write_head(op, [n_gas, 0, 0, 0, n_star, 0], [M_gas/n_gas, 0, 0, 0, M_star/n_star, 0], 0, z=1)
 
-# Gas
-write_block(op, 0, np.array([gen.gas_x, gen.gas_y, gen.gas_z]).T, np.array([gen.gas_v_x, gen.gas_v_y, gen.gas_v_z]).T, np.arange(0, n_gas))
-write_block(op, 4, np.array([gen.star_x, gen.star_y, gen.star_z]).T, np.array([gen.star_v_x, gen.star_v_y, gen.star_v_z]).T, np.arange(0, n_star))
+if n_gas:
+    write_block(op, 0, np.array([gen.gas_x, gen.gas_y, gen.gas_z]).T, np.array([gen.gas_v_x, gen.gas_v_y, gen.gas_v_z]).T, np.arange(0, n_gas))
+if n_star:
+    write_block(op, 4, np.array([gen.star_x, gen.star_y, gen.star_z]).T, np.array([gen.star_v_x, gen.star_v_y, gen.star_v_z]).T, np.arange(0, n_star))
