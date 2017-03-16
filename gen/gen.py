@@ -21,10 +21,8 @@ class Generator:
         self.G = G
 
         self._gen_dm()
-        if n_gas:
-            self._gen_gas()
-        if n_star:
-            self._gen_star()
+        self._gen_gas()
+        self._gen_star()
         self._convert_coords()
         
         return
