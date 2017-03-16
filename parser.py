@@ -60,7 +60,14 @@ gen = Generator(0, n_gas, n_star, M_halo, M_gas, M_star, R_nfw, c_nfw, R_gas, ma
 print("Writing IC File... {}".format(ic_filename))
 
 op = h5py.File(ic_filename, 'w')
-write_head(op, [n_gas, 0, 0, 0, n_star, 0], [M_gas/n_gas, 0, 0, 0, M_star/n_star, 0], 0, z=1)
+
+masses = [0]*6
+if n_gas:
+    masses[0] = M_gas/n_gas
+if n_star:
+    masses[4] = M_star/n_star
+
+write_head(op, [n_gas, 0, 0, 0, n_star, 0], [M_gas/n_gas, 0, 0, 0, masses, 0, z=1)
 
 if n_gas:
     write_block(op, 0, np.array([gen.gas_x, gen.gas_y, gen.gas_z]).T, np.array([gen.gas_v_x, gen.gas_v_y, gen.gas_v_z]).T, np.arange(0, n_gas))
